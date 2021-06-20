@@ -1,7 +1,9 @@
 <?php
-
+    
 use Illuminate\Support\Facades\Route;
-
+   
+use App\Http\Controllers\CheckoutController;
+   
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('checkout','CheckoutController@checkout');
+// Route::post('checkout','CheckoutController@afterpayment')->name('checkout.credit-card');
+
+Route::get('checkout', [CheckoutController::class, 'checkout']);
+Route::post('checkout', [CheckoutController::class, 'afterpayment'])->name('checkout.credit-card');
